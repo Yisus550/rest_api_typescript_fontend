@@ -11,7 +11,7 @@ import ErrorMessage from "../components/ErrorMessage";
 import { getProductById, updateProduct } from "../services/ProductService";
 import type { Product } from "../types";
 import ProductForm from "../components/ProductForm";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { itemVariants } from "../main";
 
 export async function action({ request, params }: ActionFunctionArgs) {
@@ -70,13 +70,13 @@ export default function EditProduct() {
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            strokeWidth="1.5"
             stroke="currentColor"
             className="size-5"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"
             />
           </svg>

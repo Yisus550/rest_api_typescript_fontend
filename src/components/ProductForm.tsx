@@ -8,7 +8,7 @@ export default function ProductForm({ product }: Props) {
   return (
     <>
       <div className="mb-4">
-        <label className="text-gray-800" htmlFor="name">
+        <label className="font-bold text-gray-800" htmlFor="name">
           Nombre Producto:
         </label>
         <input
@@ -22,7 +22,7 @@ export default function ProductForm({ product }: Props) {
       </div>
 
       <div className="mb-4">
-        <label className="text-gray-800" htmlFor="price">
+        <label className="font-bold text-gray-800" htmlFor="price">
           Precio:
         </label>
         <input

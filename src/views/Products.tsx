@@ -1,7 +1,12 @@
 import { Link, useLoaderData, type ActionFunctionArgs } from "react-router-dom";
-import { getProducts, updateProductAvailability } from "../services/ProductService";
+import {
+  getProducts,
+  updateProductAvailability,
+} from "../services/ProductService";
 import type { Product } from "../types";
 import ProductDetails from "../components/ProductDetails";
+import { AnimatePresence, motion } from "framer-motion";
+import { containerVariants, itemVariants } from "../main";
 
 export async function action({ request }: ActionFunctionArgs) {
   const data = Object.fromEntries(await request.formData());
@@ -18,9 +23,9 @@ export default function Products() {
   const products = useLoaderData() as Product[];
 
   return (
-    <>
+    <motion.div variants={containerVariants} initial="hidden" animate="visible" exit="exit">
       <div className="flex justify-between">
-        <h2 className="text-4xl font-black text-slate-500">Productos</h2>
+        <motion.h2 variants={itemVariants} className="text-4xl font-black text-slate-500">Productos</motion.h2>
         <Link
           to="/productos/nuevo"
           className="p-3 text-sm font-bold text-white bg-indigo-600 rounded shadow-sm hover:bg-indigo-500"
@@ -29,7 +34,7 @@ export default function Products() {
         </Link>
       </div>
 
-      <div className="p-2">
+      <motion.div variants={itemVariants} className="p-2">
         <table className="w-full mt-5 table-auto">
           <thead className="text-white bg-slate-800">
             <tr>
@@ -40,12 +45,12 @@ export default function Products() {
             </tr>
           </thead>
           <tbody>
-            {products.map((product) => (
-              <ProductDetails key={product.id} product={product} />
+            {products.map((product, index) => (
+              <ProductDetails key={product.id} product={product} index={index} />
             ))}
           </tbody>
         </table>
-      </div>
-    </>
+      </motion.div>
+    </motion.div>
   );
 }

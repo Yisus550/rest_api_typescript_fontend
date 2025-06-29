@@ -7,6 +7,7 @@ import {
 } from "../types";
 import axios from "axios";
 import { toBoolean } from "../helpers";
+import { toast } from "react-toastify";
 
 type ProductData = {
   [k: string]: FormDataEntryValue;
@@ -28,8 +29,10 @@ export async function addProduct(product: ProductData) {
       name: result.output.name,
       price: result.output.price,
     });
+    toast.success("Producto creado correctamente");
   } catch (error) {
     console.error(error);
+    toast.error("Error al crear el producto");
   }
 }
 
@@ -80,8 +83,10 @@ export async function updateProduct(id: Product["id"], product: ProductData) {
 
     const url = `${import.meta.env.VITE_API_URL}/api/products/${id}`;
     await axios.put(url, result.output);
+    toast.success("Producto actualizado correctamente");
   } catch (error) {
     console.error(error);
+    toast.error("Error al actualizar el producto");
   }
 }
 
@@ -89,16 +94,20 @@ export async function deleteProduct(id: Product["id"]) {
   try {
     const url = `${import.meta.env.VITE_API_URL}/api/products/${id}`;
     await axios.delete(url);
+    toast.success("Producto eliminado correctamente");
   } catch (error) {
     console.error(error);
-  }  
+    toast.error("Error al eliminar el producto");
+  }
 }
 
 export async function updateProductAvailability(id: Product["id"]) {
   try {
     const url = `${import.meta.env.VITE_API_URL}/api/products/${id}`;
     await axios.patch(url);
+    toast.success("Disponibilidad del producto actualizado correctamente");
   } catch (error) {
     console.error(error);
+    toast.error("Error al actualizar la disponibilidad del producto");
   }
 }

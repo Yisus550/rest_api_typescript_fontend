@@ -16,7 +16,7 @@ export default function Layout() {
           </motion.h1>
         </div>
       </header>
-      <main className="max-w-6xl p-10 mx-auto mt-10 bg-white shadow">
+      <main className="max-w-6xl p-10 mx-auto mt-10">
         <Outlet />
       </main>
     </motion.div>

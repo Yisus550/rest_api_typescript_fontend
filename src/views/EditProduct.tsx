@@ -11,6 +11,8 @@ import ErrorMessage from "../components/ErrorMessage";
 import { getProductById, updateProduct } from "../services/ProductService";
 import type { Product } from "../types";
 import ProductForm from "../components/ProductForm";
+import { motion } from "motion/react";
+import { itemVariants } from "../main";
 
 export async function action({ request, params }: ActionFunctionArgs) {
   const data = Object.fromEntries(await request.formData()); //* Convert FormData to object
@@ -52,7 +54,7 @@ export default function EditProduct() {
   const error = useActionData() as string;
 
   return (
-    <>
+    <motion.div variants={itemVariants} initial="hidden" animate="visible">
       <div className="flex justify-between">
         <h2 className="text-4xl font-black text-slate-500">Editar Producto</h2>
         <Link
@@ -68,23 +70,21 @@ export default function EditProduct() {
       <Form className="mt-10" method="POST">
         <ProductForm product={product} />
 
-        <div className="mb-4">
-          <label className="text-gray-800" htmlFor="availability">
-            Disponibilidad:
-          </label>
-          <select
-            id="availability"
-            className="block w-full p-3 mt-2 bg-gray-50"
-            name="availability"
-            defaultValue={product?.availability.toString()}
-          >
-            {availabilityOptions.map((option) => (
-              <option key={option.name} value={option.value.toString()}>
-                {option.name}
-              </option>
-            ))}
-          </select>
-        </div>
+        <label className="text-gray-800" htmlFor="availability">
+          Disponibilidad:
+        </label>
+        <select
+          id="availability"
+          className="block w-full p-3 mt-2 bg-gray-50"
+          name="availability"
+          defaultValue={product?.availability.toString()}
+        >
+          {availabilityOptions.map((option) => (
+            <option key={option.name} value={option.value.toString()}>
+              {option.name}
+            </option>
+          ))}
+        </select>
 
         <input
           type="submit"
@@ -92,6 +92,6 @@ export default function EditProduct() {
           value="Actualizar Producto"
         />
       </Form>
-    </>
+    </motion.div>
   );
 }

@@ -8,9 +8,11 @@ import {
 import { formatCurrency } from "../helpers";
 import type { Product } from "../types";
 import { deleteProduct } from "../services/ProductService";
+import { motion } from "motion/react";
 
 type Props = {
   product: Product;
+  index: number;
 };
 
 export async function action({ params }: ActionFunctionArgs) {
@@ -22,13 +24,18 @@ export async function action({ params }: ActionFunctionArgs) {
   }
 }
 
-export default function ProductDetails({ product }: Props) {
+export default function ProductDetails({ product, index }: Props) {
   const fetcher = useFetcher(); //* Use action without redirect
   const navigate = useNavigate();
   const isAvailable = product.availability;
 
   return (
-    <tr className="border-b ">
+    <motion.tr
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1 }}
+      className="border-b "
+    >
       <td className="p-3 text-lg text-gray-800">{product.name}</td>
       <td className="p-3 text-lg text-gray-800">
         {formatCurrency(product.price)}
@@ -73,6 +80,6 @@ export default function ProductDetails({ product }: Props) {
           </Form>
         </div>
       </td>
-    </tr>
+    </motion.tr>
   );
 }

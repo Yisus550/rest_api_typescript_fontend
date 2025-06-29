@@ -8,6 +8,8 @@ import {
 import ErrorMessage from "../components/ErrorMessage";
 import { addProduct } from "../services/ProductService";
 import ProductForm from "../components/ProductForm";
+import { motion } from "motion/react";
+import { itemVariants } from "../main";
 
 export async function action({ request }: ActionFunctionArgs) {
   const data = Object.fromEntries(await request.formData()); //* Convert FormData to object
@@ -27,7 +29,7 @@ export default function NewProduct() {
   const error = useActionData() as string;
 
   return (
-    <>
+    <motion.div variants={itemVariants} initial="hidden" animate="visible">
       <div className="flex justify-between">
         <h2 className="text-4xl font-black text-slate-500">
           Registrar Producto
@@ -50,6 +52,6 @@ export default function NewProduct() {
           value="Registrar Producto"
         />
       </Form>
-    </>
+    </motion.div>
   );
 }

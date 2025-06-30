@@ -64,7 +64,7 @@ export default function EditProduct() {
         <h2 className="text-4xl font-black text-slate-500">Editar Producto</h2>
         <Link
           to="/"
-          className="flex gap-4 px-6 py-3 text-sm font-bold text-indigo-600 transition-colors border border-indigo-600 rounded-lg shadow-sm hover:text-white hover:bg-indigo-600"
+          className="flex gap-4 px-6 py-3 text-sm font-bold text-indigo-600 transition-colors border border-indigo-600 rounded-lg shadow-sm h-fit hover:text-white hover:bg-indigo-600"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +72,7 @@ export default function EditProduct() {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="size-5"
+            className="hidden md:block size-5"
           >
             <path
               strokeLinecap="round"
@@ -80,13 +80,14 @@ export default function EditProduct() {
               d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"
             />
           </svg>
-          Volver a productos
+          <span className="hidden md:block">Volver a productos</span>
+          <span className="block md:hidden">Volver</span>
         </Link>
       </div>
 
       {error && <ErrorMessage>{error}</ErrorMessage>}
 
-      <Form className="col-span-2 p-6 mt-10 bg-white rounded-lg" method="POST">
+      <Form className="col-span-3 p-6 mt-10 bg-white rounded-lg md:col-span-3" method="POST">
         <ProductForm product={product} />
 
         <label className="font-bold text-gray-800" htmlFor="availability">

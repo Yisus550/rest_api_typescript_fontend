@@ -32,11 +32,11 @@ export default function NewProduct() {
     <motion.div variants={itemVariants} initial="hidden" animate="visible" className="grid grid-cols-3">
       <div className="flex justify-between col-span-3">
         <h2 className="text-4xl font-black text-slate-500">
-          Registrar Producto
+          Registrar Productos
         </h2>
         <Link
           to="/"
-          className="flex gap-4 px-6 py-3 text-sm font-bold text-indigo-600 transition-colors border border-indigo-600 rounded-lg shadow-sm hover:bg-indigo-600 hover:text-white"
+          className="flex gap-4 px-6 py-3 text-sm font-bold text-indigo-600 transition-colors border border-indigo-600 rounded-lg shadow-sm h-fit hover:bg-indigo-600 hover:text-white"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +44,7 @@ export default function NewProduct() {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="size-5"
+            className="hidden md:block size-5"
           >
             <path
               strokeLinecap="round"
@@ -52,13 +52,14 @@ export default function NewProduct() {
               d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"
             />
           </svg>
-          Volver a productos
+          <span className="hidden md:block">Volver a productos</span>
+          <span className="block md:hidden">Volver</span>
         </Link>
       </div>
 
       {error && <ErrorMessage>{error}</ErrorMessage>}
 
-      <Form className="col-span-2 p-6 mt-10 bg-white rounded-lg shadow" method="POST">
+      <Form className="col-span-3 p-6 mt-10 bg-white rounded-lg shadow md:col-span-2" method="POST">
         <ProductForm />
         <input
           type="submit"

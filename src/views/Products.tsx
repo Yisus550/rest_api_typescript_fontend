@@ -46,7 +46,7 @@ export default function Products() {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="size-5"
+            className="hidden md:block size-5"
           >
             <path
               strokeLinecap="round"
@@ -54,11 +54,12 @@ export default function Products() {
               d="M12 4.5v15m7.5-7.5h-15"
             />
           </svg>
-          Agregar Producto
+          <span className="hidden md:block">Agregar Producto</span>
+          <span className="block md:hidden">Agregar</span>
         </Link>
       </div>
 
-      <motion.div variants={itemVariants} className="p-2">
+      <motion.div variants={itemVariants} className="p-2 overflow-x-auto">
         <table className="w-full mt-5 bg-white shadow table-auto">
           <thead className="text-white bg-slate-800">
             <tr className="text-left">

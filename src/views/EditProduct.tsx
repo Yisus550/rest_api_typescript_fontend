@@ -87,7 +87,7 @@ export default function EditProduct() {
 
       {error && <ErrorMessage>{error}</ErrorMessage>}
 
-      <Form className="col-span-3 p-6 mt-10 bg-white rounded-lg md:col-span-3" method="POST">
+      <Form className="col-span-3 p-6 mt-10 bg-white rounded-lg md:col-span-2" method="POST">
         <ProductForm product={product} />
 
         <label className="font-bold text-gray-800" htmlFor="availability">

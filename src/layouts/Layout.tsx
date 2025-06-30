@@ -10,8 +10,8 @@ export default function Layout() {
       transition={{ duration: 0.5 }}
     >
       <header className="bg-slate-800">
-        <div className="max-w-6xl py-10 mx-auto">
-          <motion.h1 variants={itemVariants} className="text-4xl font-extrabold text-white">
+        <div className="max-w-6xl py-10 mx-4 md:mx-auto">
+          <motion.h1 variants={itemVariants} className="text-2xl font-extrabold text-white md:text-4xl">
             Administradaor de Productos
           </motion.h1>
         </div>
